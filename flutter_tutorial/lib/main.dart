@@ -1,69 +1,69 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(Center(
-      child: Text(
-        'Hello world!',
-        textDirection: TextDirection.ltr,
-      ),
-    ));
+class MyAppBar extends StatelessWidget {
+  MyAppBar({this.title});
 
-class MyApp extends StatelessWidget {
+  final Widget title;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Container(
+      height: 56.0,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(color: Colors.blue, boxShadow: <BoxShadow>[
+        BoxShadow(
+            color: Colors.black26,
+            blurRadius: 30,
+            offset: Offset(5, 5),
+            spreadRadius: 2),
+      ]),
+      child: Row(
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.menu),
+            tooltip: 'Navigation menu',
+            onPressed: null,
+          ),
+          Expanded(child: title),
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+    return Material(
+      child: Column(
+        children: <Widget>[
+          MyAppBar(
+            title: Text(
+              'Example title',
+              style: Theme.of(context).primaryTextTheme.headline6,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+          ),
+          Expanded(
+            child: Center(
+              child: Text('Hello, world!'),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+          )
+        ],
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    title: 'My app',
+    home: SafeArea(
+      child: MyScaffold(),
+    ),
+  ));
 }
