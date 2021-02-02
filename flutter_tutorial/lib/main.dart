@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Center(
+      child: Text(
+        'Hello world!',
+        textDirection: TextDirection.ltr,
+      ),
+    ));
 
 class MyApp extends StatelessWidget {
   @override
