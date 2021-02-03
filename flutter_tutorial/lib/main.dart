@@ -12,7 +12,7 @@ void main() {
 class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(Scaffold(
+    return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.menu),
@@ -32,14 +32,6 @@ class TutorialHome extends StatelessWidget {
             onPressed: null,
           )
         ],
-        bottom: TabBar(
-          key: Key('tabBar'),
-          tabs: <Widget>[
-            Tab(text: 'a'),
-            Tab(text: 'b'),
-            Tab(text: 'c'),
-          ],
-        ),
       ),
       body: Center(
         child: Text('Hello World'),
@@ -49,6 +41,6 @@ class TutorialHome extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: null,
       ),
-    ));
+    );
   }
 }
