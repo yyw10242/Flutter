@@ -4,13 +4,66 @@ void main() {
   runApp(
     MaterialApp(
       title: 'Flutter Tutorial',
-      home: TutorialHome(), //Well.. here also changed
+      home: Counter(),
     ),
   );
 }
 
-/* **********  ONLY HERE IS CHANGED IN THIS COMMIT  ********** */
-// WHICH HAVE HOW TO MAKE BUTTON
+class CounterDisplay extends StatelessWidget {
+  CounterDisplay({this.count});
+
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('Count: $count');
+  }
+}
+
+class CounterIncrementor extends StatelessWidget {
+  CounterIncrementor({this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: Text('Increment'),
+    );
+  }
+}
+
+//Changing widgets in response to input
+class Counter extends StatefulWidget {
+  @override
+  _CounterState createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      //setState let flutter know somthing changed.
+      // so let flutter to update display values.
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        CounterIncrementor(onPressed: _increment),
+        CounterDisplay(
+          count: _counter,
+        ),
+      ],
+    );
+  }
+}
+
 class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,7 +85,6 @@ class MyButton extends StatelessWidget {
   }
 }
 
-/************************************************************* */
 class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
