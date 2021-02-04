@@ -10,7 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Layout Demo',
-      theme: ThemeData(primaryColor: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Welcome To Flutter'),
@@ -70,7 +73,7 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
   );
 }
 
-Color color = Colors.blue; //Theme.of(context).primaryColor;
+Color color = Theme.of(context).primaryColor;
 
 Widget buttonSection = Container(
   child: Row(
