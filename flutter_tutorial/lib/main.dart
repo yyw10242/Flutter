@@ -25,6 +25,7 @@ class FirstRoute extends StatelessWidget {
               MaterialPageRoute(builder: (context) => SecondRoute()),
             );
           },
+          child: Text('Open route'),
         ),
       ),
     );
@@ -36,13 +37,14 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Route'),
+        title: Text('Second Route'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
+          child: Text('Go Back'),
         ),
       ),
     );
