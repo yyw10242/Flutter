@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'pages/SY0000.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Main());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Framework Prpject',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
