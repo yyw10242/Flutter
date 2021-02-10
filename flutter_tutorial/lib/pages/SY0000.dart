@@ -2,6 +2,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'SY0001[Login].dart';
 
 class Main extends StatelessWidget {
   bool isSplashed = false;
@@ -14,8 +15,9 @@ class Main extends StatelessWidget {
             appBar: AppBar(
               title: Text('Title'),
             ),
+            body: LoginScreen(),
           ),
-          null,
+          StartSplash(),
         ],
       ),
     );
@@ -29,14 +31,19 @@ class StartSplash extends StatefulWidget {
 
 class _StartSplashState extends State<StartSplash> {
   double _opacity = 1.0;
+  double _size = double.infinity;
+
   void _onTap() {
     setState(() {
       _opacity = 0;
-      log('tapped');
     });
   }
 
-  void _onEnd() {}
+  void _onEnd() {
+    setState(() {
+      _size = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,10 @@ class _StartSplashState extends State<StartSplash> {
       child: AnimatedOpacity(
         opacity: _opacity,
         duration: Duration(seconds: 2),
+        onEnd: _onEnd,
         child: Container(
+          width: _size,
+          height: _size,
           color: Theme.of(context).primaryColor,
         ),
       ),
