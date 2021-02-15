@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/SY0000.dart';
+import 'temp/temp.dart';
 
 void main() {
-  runApp(Main());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -46,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Sliderss(),
             Text(
               'You have pushed the button this many times:',
             ),
