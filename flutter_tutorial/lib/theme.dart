@@ -7,18 +7,35 @@ ThemeData theme() {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Muli',
     appBarTheme: appBarTheme(),
-    textTheme: TextTheme(
-      bodyText1: TextStyle(color: kTextColor),
-      bodyText2: TextStyle(color: kTextColor),
-    ),
+    textTheme: textTheme(),
+    inputDecorationTheme: inputDecorationTheme(),
     primarySwatch: Colors.blue,
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
 }
 
+InputDecorationTheme inputDecorationTheme() {
+  OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(28),
+    borderSide: BorderSide(color: kTextColor),
+    gapPadding: 10,
+  );
+  return InputDecorationTheme(
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    contentPadding: EdgeInsets.symmetric(
+      horizontal: 42,
+      vertical: 20,
+    ),
+    enabledBorder: outlineInputBorder,
+    focusedBorder: outlineInputBorder,
+    border: outlineInputBorder,
+  );
+}
+
 TextTheme textTheme() {
   return TextTheme(
-    headline6: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
+    bodyText1: TextStyle(color: kTextColor),
+    bodyText2: TextStyle(color: kTextColor),
   );
 }
 
